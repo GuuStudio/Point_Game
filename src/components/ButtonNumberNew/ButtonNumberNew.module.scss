@@ -1,0 +1,55 @@
+.none {
+  animation: hide 3s forwards;
+  cursor: default !important;
+}
+
+.button {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: 600;
+  border: 2px solid #000;
+  &:active {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes hide {
+  from {
+    color: #fff;
+    opacity: 1;
+  }
+
+  10% {
+    background-color: rgba(0, 128, 0, 0.468);
+    opacity: 1;
+  }
+  20% {
+    background-color: rgba(0, 128, 0, 0.414);
+    opacity: 1;
+  }
+  50% {
+    background-color: rgba(0, 128, 0, 0.534);
+    opacity: 1;
+  }
+  50% {
+    background-color: rgba(0, 128, 0, 0.721);
+    opacity: 1;
+  }
+  70% {
+    background-color: rgba(0, 128, 0, 0.836);
+    opacity: 1;
+  }
+  85% {
+    background-color: rgba(0, 128, 0, 0.978);
+    opacity: 1;
+  }
+  to {
+    background-color: rgba(0, 128, 0, 0.836);
+    opacity: 0;
+    color: #fff;
+  }
+}

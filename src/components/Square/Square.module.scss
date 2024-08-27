@@ -1,0 +1,47 @@
+.container {
+  width: 100%;
+  min-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.error {
+  color: red;
+}
+.success {
+  color: green;
+}
+.square_header {
+  width: 500px !important;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.square_header_item {
+  width: 300px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+.square_header_item * {
+  width: 150px;
+  display: flex;
+  justify-content: flex-start;
+}
+.square_header_item button {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.square {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border: 2px solid #7f7f7f;
+}

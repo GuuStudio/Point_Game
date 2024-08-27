@@ -1,0 +1,40 @@
+@import 'normalize.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+:root {
+    
+    --primary: #4e7661;
+    --primary-hover: #466b58;
+    --delete: #8a1616;
+    --delete-hover: #7d0202;
+    --background-hover-gray: #cfcfcf;
+    --default-layout-header-height: 70px;
+    --default-layout-header-width: 90%;
+    --info-background : #EBF3FB ;
+    --info-color : #3087C2 ;
+    --success-background: #D3FBD8;
+    --success-color: #307007;
+    --warning-background: #FFF0B5;
+    --warning-color: #7A400C;
+    --error-background:#FFCDB0;
+    --error-color:#7A0B1F; 
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 14px;
+}
+p {
+    margin: 0;
+}
+body {
+    font-family:  -apple-system, 'HelveticaNeue-Medium', 'Helvetica Neue', 'Roboto', 'Droid Sans', Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-rendering: optimizespeed;
+}
+
