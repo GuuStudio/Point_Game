@@ -122,13 +122,25 @@ const SquareNew = () => {
             >
               Restart
             </button>
-            <button
-              className={clsx(styles.square_pause)}
-              onClick={() => setState("pause")}
-              disabled={state !== "play"}
-            >
-              Skip counter
-            </button>
+            {state !== "lose" &&
+              state !== "win" &&
+              (state === "play" ? (
+                <button
+                  className={clsx(styles.square_pause)}
+                  onClick={() => setState("pause")}
+                  disabled={state !== "play"}
+                >
+                  Stop
+                </button>
+              ) : (
+                <button
+                  className={clsx(styles.square_pause)}
+                  onClick={() => setState("play")}
+                  disabled={state !== "pause"}
+                >
+                  Play
+                </button>
+              ))}
           </div>
         </div>
       </div>
