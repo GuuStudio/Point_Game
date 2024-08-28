@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import styles from "./SquareNew.module.scss";
 import ButtonNumberNew from "../ButtonNumberNew/ButtonNumberNew";
-import happy from "../../assets/firecracker.svg";
+import happy from "../../assets/image/firecracker.svg";
 import sad from "../../assets/image/sad.svg";
 
 const SquareNew = () => {
   const [buttons, setButtons] = useState([]);
-  const [arrayButtonsLength, setArrayButtonsLength] = useState(0);
+  const [numberStart, setNumberStart] = useState(0);
   const [count, setCount] = useState(0);
   const [state, setState] = useState("pause");
   const [nextButton, setNextButton] = useState(1);
@@ -34,11 +34,11 @@ const SquareNew = () => {
   }, [state]);
   useEffect(() => {
     setNextButton(1);
-  }, [arrayButtonsLength]);
+  }, [numberStart]);
   const handleRestart = () => {
-    if (arrayButtonsLength > 0) {
+    if (numberStart > 0) {
       const newButtons = [];
-      for (let i = 1; i <= arrayButtonsLength; i++) {
+      for (let i = 1; i <= numberStart; i++) {
         newButtons.push({
           style: {
             top: Math.random() * 450,
@@ -63,7 +63,7 @@ const SquareNew = () => {
       setResult("GAME OVER");
     }
 
-    if (nextButton === Number(arrayButtonsLength)) {
+    if (nextButton === Number(numberStart)) {
       setResult("You Win !!!");
       setState("win");
     }
@@ -102,9 +102,9 @@ const SquareNew = () => {
             <input
               inputMode="numeric"
               pattern="[0-9]*"
-              value={arrayButtonsLength}
+              value={numberStart}
               onChange={(e) => {
-                setArrayButtonsLength(e.target.value);
+                setNumberStart(e.target.value);
               }}
             />
           </div>

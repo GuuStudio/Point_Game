@@ -4,7 +4,7 @@ import styles from "./Square.module.scss";
 import ButtonNumber from "../ButtonNumber/ButtonNumber";
 const Square = () => {
   const [buttons, setButtons] = useState([]);
-  const [arrayButtonsLength, setArrayButtonsLength] = useState(0);
+  const [startNumber, setStartNumber] = useState(0);
   const [count, setCount] = useState(0);
   const [state, setState] = useState("pause");
   const [nextButton, setNextButton] = useState(1);
@@ -31,11 +31,11 @@ const Square = () => {
   }, [state]);
   useEffect(() => {
     setNextButton(1);
-  }, [arrayButtonsLength]);
+  }, [startNumber]);
   const handleRestart = () => {
-    if (arrayButtonsLength > 0) {
+    if (startNumber > 0) {
       const newButtons = [];
-      for (let i = 1; i <= arrayButtonsLength; i++) {
+      for (let i = 1; i <= startNumber; i++) {
         newButtons.push({
           style: {
             top: Math.random() * 450,
@@ -60,7 +60,7 @@ const Square = () => {
       setResult("GAME OVER");
     }
 
-    if (nextButton === Number(arrayButtonsLength)) {
+    if (nextButton === Number(startNumber)) {
       setResult("ALL CLEARED");
       setState("win");
     }
@@ -82,9 +82,9 @@ const Square = () => {
           <input
             inputMode="numeric"
             pattern="[0-9]*"
-            value={arrayButtonsLength}
+            value={startNumber}
             onChange={(e) => {
-              setArrayButtonsLength(e.target.value);
+              setStartNumber(e.target.value);
             }}
           />
         </div>
