@@ -7,7 +7,7 @@ import sad from "../../assets/image/sad.svg";
 
 const SquareNew = () => {
   const [buttons, setButtons] = useState([]);
-  const [numberStart, setNumberStart] = useState(0);
+  const [startNumber, setStartNumber] = useState(0);
   const [count, setCount] = useState(0);
   const [state, setState] = useState("pause");
   const [nextButton, setNextButton] = useState(1);
@@ -34,11 +34,14 @@ const SquareNew = () => {
   }, [state]);
   useEffect(() => {
     setNextButton(1);
-  }, [numberStart]);
+  }, [startNumber]);
   const handleRestart = () => {
-    if (numberStart > 0) {
+    if (startNumber > 100) {
+      setStartNumber(100);
+    }
+    if (startNumber > 0 && startNumber <= 100) {
       const newButtons = [];
-      for (let i = 1; i <= numberStart; i++) {
+      for (let i = 1; i <= startNumber; i++) {
         newButtons.push({
           style: {
             top: Math.random() * 450,
@@ -63,7 +66,7 @@ const SquareNew = () => {
       setResult("GAME OVER");
     }
 
-    if (nextButton === Number(numberStart)) {
+    if (nextButton === Number(startNumber)) {
       setResult("You Win !!!");
       setState("win");
     }
@@ -100,11 +103,11 @@ const SquareNew = () => {
           <div className={clsx(styles.square_header_item)}>
             <p>Points:</p>
             <input
-              inputMode="numeric"
-              pattern="[0-9]*"
-              value={numberStart}
+              type="number"
+              max={100}
+              value={startNumber}
               onChange={(e) => {
-                setNumberStart(e.target.value);
+                setStartNumber(e.target.value);
               }}
             />
           </div>
@@ -119,13 +122,25 @@ const SquareNew = () => {
             >
               Restart
             </button>
-            <button
-              className={clsx(styles.square_pause)}
-              onClick={() => setState("pause")}
-              disabled={state !== "play"}
-            >
-              Skip counter
-            </button>
+            {state !== "lose" &&
+              state !== "win" &&
+              (state === "play" ? (
+                <button
+                  className={clsx(styles.square_pause)}
+                  onClick={() => setState("pause")}
+                  disabled={state !== "play"}
+                >
+                  Stop
+                </button>
+              ) : (
+                <button
+                  className={clsx(styles.square_pause)}
+                  onClick={() => setState("play")}
+                  disabled={state !== "pause"}
+                >
+                  Play
+                </button>
+              ))}
           </div>
         </div>
       </div>

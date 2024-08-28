@@ -39,6 +39,14 @@
   padding: 5px 10px;
   cursor: pointer;
 }
+.square_header_item input {
+  /* For Webkit browsers like Chrome, Safari */
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
 
 .square {
   position: relative;
