@@ -9,15 +9,14 @@ const Layout = () => {
 
   return (
     <div className={clsx(styles.container)}>
-      <div>
-        <select
-          onChange={(e) => setState(e.target.value)}
-          className={clsx(styles.select)}
-        >
-          <option value="old">Old</option>
-          <option value="new">New</option>
-        </select>
-      </div>
+      <select
+        onChange={(e) => setState(e.target.value)}
+        className={clsx(styles.select)}
+      >
+        <option value="old">Old</option>
+        <option value="new">New</option>
+      </select>
+
       {state === "old" ? <Square /> : <SquareNew />}
     </div>
   );

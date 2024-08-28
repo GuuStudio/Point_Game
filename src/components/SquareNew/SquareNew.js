@@ -70,61 +70,63 @@ const SquareNew = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={clsx(styles.square)}>
-        {buttons.map((button, index) => (
-          <ButtonNumberNew
-            nextButton={nextButton}
-            button={button}
-            handleClickButton={handleClickButton}
-            key={index}
-          />
-        ))}
-      </div>
-      <div className={clsx(styles.square_header)}>
-        {state === "win" && (
-          <img width={200} height={200} src={happy} alt="happy" />
-        )}
-        {state === "lose" && (
-          <img width={200} height={200} src={sad} alt="happy" />
-        )}
-        <h2
-          className={clsx(styles.square_header_title, {
-            [styles.error]: state === "lose",
-            [styles.success]: state === "win",
-          })}
-        >
-          {result}
-        </h2>
-        <div className={clsx(styles.square_header_item)}>
-          <p>Points:</p>
-          <input
-            inputMode="numeric"
-            pattern="[0-9]*"
-            value={arrayButtonsLength}
-            onChange={(e) => {
-              setArrayButtonsLength(e.target.value);
-            }}
-          />
+    <div className={styles.wrap}>
+      <div className={styles.container}>
+        <div className={clsx(styles.square)}>
+          {buttons.map((button, index) => (
+            <ButtonNumberNew
+              nextButton={nextButton}
+              button={button}
+              handleClickButton={handleClickButton}
+              key={index}
+            />
+          ))}
         </div>
-        <div className={clsx(styles.square_header_item)}>
-          <p>Time:</p>
-          <p>{count > 0 ? Math.round(count * 10) / 10 : "0.0"}s</p>
-        </div>
-        <div className={clsx(styles.square_header_item)}>
-          <button
-            className={clsx(styles.square_restart)}
-            onClick={handleRestart}
+        <div className={clsx(styles.square_header)}>
+          {state === "win" && (
+            <img width={200} height={200} src={happy} alt="happy" />
+          )}
+          {state === "lose" && (
+            <img width={200} height={200} src={sad} alt="happy" />
+          )}
+          <h2
+            className={clsx(styles.square_header_title, {
+              [styles.error]: state === "lose",
+              [styles.success]: state === "win",
+            })}
           >
-            Restart
-          </button>
-          <button
-            className={clsx(styles.square_pause)}
-            onClick={() => setState("pause")}
-            disabled={state !== "play"}
-          >
-            Skip counter
-          </button>
+            {result}
+          </h2>
+          <div className={clsx(styles.square_header_item)}>
+            <p>Points:</p>
+            <input
+              inputMode="numeric"
+              pattern="[0-9]*"
+              value={arrayButtonsLength}
+              onChange={(e) => {
+                setArrayButtonsLength(e.target.value);
+              }}
+            />
+          </div>
+          <div className={clsx(styles.square_header_item)}>
+            <p>Time:</p>
+            <p>{count > 0 ? Math.round(count * 10) / 10 : "0.0"}s</p>
+          </div>
+          <div className={clsx(styles.square_header_item)}>
+            <button
+              className={clsx(styles.square_restart)}
+              onClick={handleRestart}
+            >
+              Restart
+            </button>
+            <button
+              className={clsx(styles.square_pause)}
+              onClick={() => setState("pause")}
+              disabled={state !== "play"}
+            >
+              Skip counter
+            </button>
+          </div>
         </div>
       </div>
     </div>
