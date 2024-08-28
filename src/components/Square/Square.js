@@ -33,7 +33,10 @@ const Square = () => {
     setNextButton(1);
   }, [startNumber]);
   const handleRestart = () => {
-    if (startNumber > 0) {
+    if (startNumber > 100) {
+      setStartNumber(100);
+    }
+    if (startNumber > 0 && startNumber <= 100) {
       const newButtons = [];
       for (let i = 1; i <= startNumber; i++) {
         newButtons.push({
@@ -80,8 +83,7 @@ const Square = () => {
         <div className={clsx(styles.square_header_item)}>
           <p>Points:</p>
           <input
-            inputMode="numeric"
-            pattern="[0-9]*"
+            type="number"
             value={startNumber}
             onChange={(e) => {
               setStartNumber(e.target.value);
